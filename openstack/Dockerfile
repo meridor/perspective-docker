@@ -19,4 +19,4 @@ EXPOSE 8080 5801
 
 ADD entry_point.sh /usr/bin/entry_point.sh
 
-#ENTRYPOINT ["/usr/bin/entry_point.sh"]
+ENTRYPOINT ["/usr/bin/entry_point.sh"]
