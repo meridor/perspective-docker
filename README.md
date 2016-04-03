@@ -1,7 +1,6 @@
 # Perspective Docker Containers
 This repository contains Perspective [Docker](http://docker.com/) containers build files.
 
-## Usage
-1. Change directory to respective cloud, e.g.: ```$ cd openstack```
-2. Build image: ```$ docker build -t perspective-openstack .```
-3. Start container from image: ```$ docker run -it perspective-openstack```
+## Openstack container
+1. Build image: ```$ docker build -t perspective-openstack openstack/``` or pull it from Docker hub ```$ docker pull meridor/perspective-openstack:latest```
+2. Start container from image: ```$ docker run -it -e NAME=some_name -e ENDPOINT=https://identity.example.com/v2.0 -e PROJECT_NAME=test -e LOGIN=username -e PASSWORD=password meridor/perspective-openstack:latest```
