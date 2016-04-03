@@ -2,9 +2,6 @@ FROM ubuntu:14.04
 
 MAINTAINER Ivan Krutov <vania-pooh@meridor.org>
 
-ADD entry_point.sh /usr/bin/entry_point.sh
-
-
 RUN sudo apt-get update && \
     sudo apt-get -y --force-yes install software-properties-common && \
     sudo add-apt-repository -y ppa:meridor/perspective && \
@@ -14,6 +11,12 @@ RUN sudo apt-get update && \
     sudo apt-get -y --force-yes install oracle-java8-installer perspective-storage perspective-openstack perspective-rest perspective-shell && \
     sudo apt-get clean
 
+ENV LANG en_US.UTF-8
+
+RUN sudo locale-gen en_US.UTF-8
+
 EXPOSE 8080 5801
 
-ENTRYPOINT ["/usr/bin/entry_point.sh"]
+ADD entry_point.sh /usr/bin/entry_point.sh
+
+#ENTRYPOINT ["/usr/bin/entry_point.sh"]
