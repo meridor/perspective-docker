@@ -21,11 +21,11 @@ fi
 
 GC_OPTS="-XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled"
 MEMORY_OPTS="-Xmx512m"
-JAVA_ARGS="$GC_OPTS $MEMORY_OPTS -Djava.net.preferIPv6Addresses=true"
+JAVA_ARGS="$GC_OPTS $MEMORY_OPTS"
 
 java $JAVA_ARGS -Xbootclasspath/a:/etc/perspective/storage -jar /usr/share/perspective/perspective-storage/perspective-storage.jar >> /var/log/perspective/perspective-storage.log 2>&1 &
 sleep 0.5
-java $JAVA_ARGS -jar /usr/share/perspective/perspective-rest/jetty-runner.jar --classes /etc/perspective /usr/share/perspective/perspective-rest/perspective-rest.war >> /var/log/perspective/perspective-rest.log 2>&1 &
-java $JAVA_ARGS -jar /usr/share/perspective/perspective-openstack/perspective-openstack.jar >> /var/log/perspective/perspective-openstack.log 2>&1 &
+java $JAVA_ARGS -Xbootclasspath/a:/etc/perspective/rest -jar /usr/share/perspective/perspective-rest/jetty-runner.jar --classes /etc/perspective /usr/share/perspective/perspective-rest/perspective-rest.war >> /var/log/perspective/perspective-rest.log 2>&1 &
+java $JAVA_ARGS -Xbootclasspath/a:/etc/perspective/openstack -jar /usr/share/perspective/perspective-openstack/perspective-openstack.jar >> /var/log/perspective/perspective-openstack.log 2>&1 &
 
 perspective
