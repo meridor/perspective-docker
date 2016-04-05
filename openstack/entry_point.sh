@@ -2,9 +2,9 @@
 
 CLOUDS_XML="/etc/perspective/openstack/clouds.xml"
 
-if [ -n "$NAME" ]; then
-    sed -i "s|cloud_id|$NAME|g" $CLOUDS_XML
-    sed -i "s|cloud_name|$NAME|g" $CLOUDS_XML
+if [ -n "$PROJECT_NAME" ]; then
+    sed -i "s|cloud_id|$PROJECT_NAME|g" $CLOUDS_XML
+    sed -i "s|cloud_name|$PROJECT_NAME|g" $CLOUDS_XML
 fi
 
 if [ -n "$ENDPOINT" ]; then
